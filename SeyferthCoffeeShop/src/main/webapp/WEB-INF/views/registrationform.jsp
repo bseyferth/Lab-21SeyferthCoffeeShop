@@ -3,40 +3,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 
+<main class = "container">
 	<p>
 	<a href = "/">Home</a>
 	</p>
 
 			<!-- Form Action determines the next URL path -->
-	<form action = "/summary"> 
+	<form action = "/summary" method = "post"> 
 	<p>
-	First Name: <input name = "firstName"/>
+	First Name: <input name = "firstName" required minlength="2"/>
 	</p>
 	<p>
-	Last Name: <input name = "lastName"/>
+	Last Name: <input name = "lastName" required minlength="2"/>
 	</p>
 	<p>
-	Email: <input type = "email" name = "email"/>
+	Email: <input type = "email" name = "email" required/>
 	</p>
 	<p>
-	Phone Number: <input name = "phoneNumber"/>
+	Phone Number: <input name = "phoneNumber" required pattern = "[0-9]{10}" minlength ="10" maxlength ="10"/>
 	</p>
 	<p>
-	Password: <input name = "password"/>
+	Password: <input type = "password" name = "password"/>
 	</p>
 	<p>
-	Verify Password: <input name = "verifyPassword"/>
+	Verify Password: <input type = "password" name = "verifyPassword"/>
 	</p>
 	<p>
-	<button> Go! </button>
+	<button class="btn btn-secondary"> Go! </button>
 	</p>
 	</form>
 
-
+</main>
 </body>
 </html>

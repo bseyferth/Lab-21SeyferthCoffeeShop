@@ -21,9 +21,21 @@ public class SeyferthCoffeeShopController {
 	}
 	
 	@RequestMapping("/summary")
-	public ModelAndView showSummary(@RequestParam ("firstName") String firstName) {
+	public ModelAndView showSummary(@RequestParam ("firstName") String firstName,
+			@RequestParam ("lastName") String lastName,
+			@RequestParam ("email") String email,
+			@RequestParam ("phoneNumber") String phoneNumber,
+			@RequestParam ("password") String password) {
+		
+		User user = new User();
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
+		user.setEmail(email);
+		user.setPhoneNumber(phoneNumber);
+		user.setPassword(password);
+		
 		ModelAndView mav = new ModelAndView("summary");
-		mav.addObject("firstName", firstName);
+		mav.addObject("user", user);
 		return mav;
 	}
 	
