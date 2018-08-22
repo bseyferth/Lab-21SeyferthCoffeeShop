@@ -1,17 +1,27 @@
 package coffeePack.SeyferthCoffeeShop;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
-public class SeyferthCoffeeShopController {
+import co.grandcircus.jdbcintro.entity.Room;
 
+
+@Controller
+public class SeyferthCoffeeShopController { 
+
+	@Autowired
+	private UsersDao usersDao;
+	
 	@RequestMapping ("/")
 	public ModelAndView showHomePage() {
-		ModelAndView mav = new ModelAndView("foo");
-		return mav;
+		List<Item> items = usersDao.findAll();
+		return new ModelAndView("foo", "items", items);
+
 	}
 	
 	@RequestMapping("/registration-form")
@@ -28,11 +38,13 @@ public class SeyferthCoffeeShopController {
 			@RequestParam ("password") String password) {
 		
 		User user = new User();
+		user.setId(null);
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
 		user.setEmail(email);
 		user.setPhoneNumber(phoneNumber);
 		user.setPassword(password);
+		usersDao.create(user);
 		
 		ModelAndView mav = new ModelAndView("summary");
 		mav.addObject("user", user);
