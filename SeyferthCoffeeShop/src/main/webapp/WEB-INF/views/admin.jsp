@@ -5,32 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Home</title>
+<title>Admin</title>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-
-	<div class="container">
-	<h1>Welcome to Seyferth's Coffee Shop</h1>
-	
-
-	<p  class = "textCenter">
-	<a href="/registration-form">Register!</a> 
-	</p>
-	
-	<p  class = "textCenter">
-	<a href="/admin">Admin</a>
-	</p>
-	
-	<p>
-	<img src="coffeecup.png" class = "picCenter" height = 150pxl width = 100pxl/>
-	</p>
-	
+	<div class ="container">
+	<h1>Welcome to Seyferth's Coffee Shop </br> Admin Page</h1>
 			<table class="table">
 			<thead>
 				<tr>
-					<th>Item</th><th>Description</th><th>Quantity</th><th>Price</th>
+					<th>Item</th><th>Description</th><th>Quantity</th><th>Price</th><th>Edit</th><th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -40,14 +25,18 @@
 					<td>${item.description}</td>
 					<td>${item.quantity}</td>
 					<td>${item.price}</td>
+					<td><a href ="/edit?id=${item.id}&name=${item.name}&quantity=${item.quantity}&price=${item.price}">Edit</a></td>
+					<td><a href ="/delete?id=${item.id}&name=${item.name}&quantity=${item.quantity}&price=${item.price}">Delete</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-	
-	
-	
+		<p>
+		<a href = "/">Home</a>
+		</p>
+		<p>
+		<a href="/add-item">Add Item</a>
+		</p>
 	</div>
-
 </body>
 </html>
