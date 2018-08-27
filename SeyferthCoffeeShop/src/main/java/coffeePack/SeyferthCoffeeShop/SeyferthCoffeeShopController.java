@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import co.grandcircus.foodsorm.entity.Food;
+
 
 
 @Controller
@@ -31,11 +33,19 @@ public class SeyferthCoffeeShopController {
 		return new ModelAndView("admin", "item", items);
 	}
 	
-	@RequestMapping ("/edit")
-	public ModelAndView editItemPage() {
-		List<Item> items = itemDao.findAll();
-		return new ModelAndView("admin", "item", items);
+	@RequestMapping ("/edititem")
+	public ModelAndView editItemPage(@RequestParam("id") Long id) {
+		ModelAndView mav = new ModelAndView("edititem");
+		mav.addObject("item", itemDao.findById(id));
+		return mav;
 	}
+	
+	@RequestMapping("/editanitem")
+	public ModelAndView submitEditForm(Item item) {
+		itemDao.update(item);
+		return new ModelAndView("redirect:/admin");
+	}
+	
 	
 	@RequestMapping ("/delete")
 	public ModelAndView delete(@RequestParam("id") Long id) {

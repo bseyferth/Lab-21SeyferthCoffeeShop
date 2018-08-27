@@ -25,8 +25,8 @@
 					<td>${item.description}</td>
 					<td>${item.quantity}</td>
 					<td>${item.price}</td>
-					<td><a href ="/edit?id=${item.id}&name=${item.name}&quantity=${item.quantity}&price=${item.price}">Edit</a></td>
-					<td><a href ="/delete?id=${item.id}&name=${item.name}&quantity=${item.quantity}&price=${item.price}">Delete</a></td>
+					<td><a href ="/edititem?id=${item.id}&name=${item.name}&description=${item.description}&quantity=${item.quantity}&price=${item.price}">Edit</a></td>
+					<td><a href ="/delete?id=${item.id}&name=${item.name}&description=${item.description}&quantity=${item.quantity}&price=${item.price}">Delete</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>

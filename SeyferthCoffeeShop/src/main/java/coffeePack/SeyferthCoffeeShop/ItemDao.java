@@ -1,7 +1,5 @@
 package coffeePack.SeyferthCoffeeShop;
 
-
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,8 +7,6 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-
 
 
 @Repository
@@ -35,5 +31,11 @@ public class ItemDao {
 		em.persist(item);
 	}
 	
+	public Item findById(Long id) {
+		return em.find(Item.class, id);
+	}
 
+	public void update(Item item) {
+		em.merge(item);
+	}
 }
